@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
 /* Seed test data */
 router.post('/seed', function(req,res) {
   // drop 'contacts' table if already exists, and seed some test data
-  pgconn.query("drop table if exists contacts; create table contacts(id serial primary key,firstname varchar(30) not null,lastname varchar(30) not null, email varchar(30) not null); insert into contacts(firstname, lastname, email) values ('Bilbo','Baggins','bilbo@theshire.com'),('Frodo','Baggins','frodo@theshire.com'),('Mario','Timofte','mario@timofte.com'),('Samwise','Gamgee','sam@theshire.com'),('Peregrin','Took','pippin@theshire.com'),('Meriadoc','Brandybuck','merry@theshire.com')",function(err,results) {
+  pgconn.query("drop table if exists contacts; create table contacts(id serial primary key,firstname varchar(30) not null,lastname varchar(30) not null, email varchar(30) not null); insert into contacts(firstname, lastname, email) values ('Bilbo','Baggins','bilbo@theshire.com'),('Frodo','Baggins','frodo@theshire.com'),('Samwise','Gamgee','sam@theshire.com'),('Peregrin','Took','pippin@theshire.com'),('Meriadoc','Brandybuck','merry@theshire.com')",function(err,results) {
     if (err) {
       console.log(err);
       res.render('index', { error: 'Seeding database failure! '+err.stack, contacts: null, title: 'Contact List' });
